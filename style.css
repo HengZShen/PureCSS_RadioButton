@@ -1,0 +1,636 @@
+/* body scroll*/
+
+body {
+  background-color: #ffffff;
+  transition: 1s;
+}
+
+/* 參考資參考資料
+/* https://www.littlesnippets.net/blog/6-image-hover-effects-using-page-curls */
+
+figure {
+  font-family: "Raleway", sans-serif;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  /*   min-width: 250px;
+  max-width: 250px;
+  max-height: 220px; */
+  /*   width: 100%; */
+  background: #000000;
+  /*   text-align: left; */
+}
+figure * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+figure img {
+  opacity: 1;
+  width: 100%;
+  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.35s;
+}
+figure > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+figure > div::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  opacity: 0;
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+  background-image: linear-gradient(
+    -45deg,
+    #000000 0%,
+    rgba(0, 0, 0, 0.2) 40%,
+    rgba(0, 0, 0, 0.8)
+  );
+}
+figure .card-title {
+  word-spacing: -0.1em;
+  font-weight: 400;
+  text-transform: uppercase;
+  top: 0;
+  opacity: 0;
+  padding: 25px;
+  margin: 0;
+  position: absolute;
+  color: transparent;
+  text-shadow: 0 0 10px #ffffff;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+figure .card-title {
+  font-weight: 800;
+}
+figure .fa-info {
+  display: inline-block;
+  font-size: 25px;
+  color: #ffffff;
+  padding: 6px 16px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 1;
+  -webkit-transition: 0.05s linear;
+  transition: 0.05s linear;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+figure .curl {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #f3f3f3 20%,
+    #bbbbbb 38%,
+    #aaaaaa 44%,
+    #888888 50%,
+    rgba(0, 0, 0, 0.7) 50%,
+    rgba(0, 0, 0, 0.4) 60%,
+    rgba(0, 0, 0, 0.3)
+  );
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+figure .curl:before,
+figure .curl:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 12%;
+  bottom: 6%;
+  width: 70%;
+  max-width: 300px;
+  max-height: 100px;
+  height: 55%;
+  box-shadow: 0 12px 15px rgba(0, 0, 0, 0.3);
+  transform: skew(-10deg) rotate(-6deg);
+}
+figure .curl:after {
+  left: auto;
+  right: 6%;
+  bottom: auto;
+  top: 14%;
+  transform: skew(-15deg) rotate(-84deg);
+}
+
+figure:hover > div .card-title {
+  opacity: 1;
+  text-shadow: 0 0 0px #ffffff;
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+figure:hover > div::before,
+figure.hover > div::before {
+  opacity: 1;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+figure:hover .fa-info {
+  opacity: 0.7;
+  /* -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s; */
+  transition-delay: 0.6s;
+}
+figure:hover .curl {
+  width: 80px;
+  height: 80px;
+  -webkit-transition-delay: 0s;
+  /* transition-delay: 0s; */
+  transition-delay: 0.5s;
+}
+
+.fa-info:hover {
+  animation: wiggle 0.3s infinite alternate;
+  cursor: pointer;
+}
+
+/* 參考 https://codepen.io/jaflo/pen/ljzLd */
+@keyframes wiggle {
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+.avatar-male {
+  border: 3px outset #138a92;
+}
+
+.avatar-female {
+  border: 3px outset #ff6550;
+}
+
+@keyframes pulse-grow-border-glow {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px rgb(29, 126, 236);
+  }
+  to {
+    box-shadow: 0 0 10px #fff, 0 0 20px rgb(218, 20, 70);
+    border: 0;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes border-glow {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px rgb(29, 126, 236);
+  }
+  to {
+    box-shadow: 0 0 10px #fff, 0 0 20px rgb(218, 20, 70);
+  }
+}
+
+#favorite-button:hover {
+  animation: pulse-grow-border-glow 0.5s infinite alternate;
+}
+
+#heartbroke-button:hover {
+  animation: sad 1s infinite alternate;
+}
+
+@keyframes sad {
+  /* https://css-tricks.com/snippets/css/shake-css-keyframe-animation/ */
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(1px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(1px, 0, 0);
+  }
+}
+
+#reject-button:hover {
+  animation: wiggle 0.3s infinite alternate;
+  background-color: #10c7d4;
+  border-color: #10c7d4;
+}
+
+.name {
+  font-family: "Raleway", sans-serif;
+}
+
+.modal-content {
+  position: fixed;
+  width: 400px;
+  height: fit-content;
+  top: 20vh;
+  left: calc(50% - 200px);
+  bottom: 40px;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.container {
+  position: relative;
+}
+
+#info-male {
+  color: #42bcf5;
+}
+
+#info-female {
+  color: #f55142;
+}
+
+.super-like {
+  animation: superLike 0.8s infinite alternate;
+}
+
+@keyframes superLike {
+  from {
+    box-shadow: 0px 0px 29px 17px rgba(33, 154, 235, 0.32);
+  }
+  to {
+    box-shadow: 0px 0px 29px 17px rgba(235, 7, 38, 0.32);
+    /* https://cssbud.com/css-generators/css-glow-generator/ */
+  }
+}
+
+/* not display color slider for saturation and value */
+
+.IroSliderBg,
+.IroSlider {
+  display: none !important;
+}
+
+.dropright {
+  width: 38px;
+  position: relative;
+  right: -100px;
+}
+
+.dropdown-menu {
+  /* position: relative; */
+  height: 38px;
+}
+
+/* reset to white color */
+
+.white {
+  border: 1px solid rgb(92, 88, 88);
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  position: absolute;
+  top: 1px;
+  left: 15px;
+}
+
+.white2 {
+  border: 1px solid rgb(92, 88, 88);
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  left: 105px;
+}
+
+#dropleft-button {
+  /* https://mycolor.space/gradient */
+  background: linear-gradient(
+    to right top,
+    #d55ba0,
+    #c55eaf,
+    #b162bc,
+    #9868c6,
+    #7a6dce,
+    #627cdb,
+    #4389e5,
+    #0096eb,
+    #00aef1,
+    #00c1de,
+    #00d0b5,
+    #21da82
+  );
+
+  /* left: 1000px !important; */
+}
+
+@media screen and (max-width: 992px) {
+  .dropright {
+    width: 38px;
+    position: relative;
+    right: 0px !important;
+  }
+  .white {
+    border: 1px solid rgb(92, 88, 88);
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 1px;
+    left: 50px;
+  }
+
+  .color-picker {
+    left: 100px !important;
+  }
+
+  .white2 {
+    border: 1px solid rgb(92, 88, 88);
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    position: absolute;
+    top: 1px;
+    left: 150px;
+  }
+
+  #dropleft-button {
+    /* https://mycolor.space/gradient */
+    background: linear-gradient(
+      to right top,
+      #d55ba0,
+      #c55eaf,
+      #b162bc,
+      #9868c6,
+      #7a6dce,
+      #627cdb,
+      #4389e5,
+      #0096eb,
+      #00aef1,
+      #00c1de,
+      #00d0b5,
+      #21da82
+    );
+    left: 0;
+    position: relative;
+  }
+
+  #search-form {
+    position: relative;
+    left: -50px;
+    margin: 0.5em;
+  }
+}
+
+/* carousel */
+.caption-title {
+  font-size: 2.2em !important;
+}
+
+.caption-subtitle {
+  font-size: 1.5em !important;
+}
+
+#first-carousel,
+#second-carousel,
+#third-carousel {
+  filter: brightness(0.5) !important;
+}
+
+/* searchBar with category*/
+
+.dropdown-item {
+  background-color: white !important;
+}
+
+/* 新增 Re */
+/* .dropdown-menu {
+  min-width:0;
+} */
+
+.dropdown-item {
+  width: 240px;
+  height: 200px;
+  /* background-color: #ccdf29 */
+}
+
+/* filter特效 */
+
+/* https://stackoverflow.com/questions/38377062/how-to-make-html-button-look-pressed-in-using-css */
+.button-push {
+  background: #e5e5e5 !important;
+  outline: none;
+  /* -webkit-box-shadow: inset 0px 0px 5px #c1c1c1 !important;
+     -moz-box-shadow: inset 0px 0px 5px #c1c1c1 !important;
+          box-shadow: inset 0px 0px 5px #c1c1c1 !important; */
+  box-shadow: inset 0px 0px 10px 1px rgba(37, 38, 42, 0.77) !important;
+}
+
+/* .btn:active {
+  box-shadow:none !important;
+} */
+
+.btn:hover {
+  background: none;
+}
+
+.dropitem:hover {
+  /* background-color:#fff; */
+  box-shadow: none !important;
+}
+
+.dropdown-item:active {
+  background-color: #fff;
+}
+
+#search-menu {
+  width: 241.5px;
+}
+
+/* two way slider*/
+
+#filter-slider {
+  position: relative;
+  /*   height: 100px;
+  background-color: rgba(0, 0, 0, 0.1); */
+}
+
+.slider {
+  position: relative;
+  z-index: 1;
+  height: 10px;
+  margin: 0 15px;
+  /* background:#b162bc; */
+}
+
+.slider > .track {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 5px;
+  background-color: #e0dce7;
+}
+
+.slider > .range {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+  background-color: #a4dfe7;
+}
+
+.slider > .thumb {
+  position: absolute;
+  z-index: 3;
+  width: 15px;
+  height: 15px;
+  background-color: #696765;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(98, 0, 238, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.slider > .thumb.left {
+  /* top:8px;
+  left: 25%;
+  transform: translate(-10px, -10px); */
+  transform: translate(-15px, -3px);
+}
+
+.slider > .thumb.right {
+  /* top:8px;
+  right: 25%;
+  transform: translate(10px, -10px); */
+  transform: translate(15px, -3px);
+}
+
+input[type="range"] {
+  position: absolute;
+  pointer-events: none;
+  -webkit-appearance: none;
+  z-index: 2;
+  height: 10px;
+  width: 100%;
+  opacity: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  pointer-events: all;
+  width: 30px;
+  height: 30px;
+  border-radius: 0;
+  border: 0 none;
+  background-color: red;
+  -webkit-appearance: none;
+}
+
+/* #input-left {
+  top:-100px;
+}
+
+#input-right {
+  top: -50px;
+} */
+
+#max-age,
+#min-age {
+  /* background-color:#0096eb; */
+  width: 35px;
+  height: 30px;
+  text-align: center;
+}
+
+/* 2021/2/19 新增 */
+/* hide radio button (the round disc) */
+input[type="radio"] {
+  display: none;
+  margin: 10px;
+}
+
+/* change the look and feel of labels (which are adjacent to radiobuttons) Add some margin, padding to label */
+
+input[type="radio"] + label {
+  display: inline-block;
+  margin: -2px;
+  padding: 8px;
+  background-color: transparent;
+  border: 0.5px solid #e1e1e1;
+
+  /*   中間顏色立體 */
+  background: linear-gradient(to bottom, #fff, #ddd);
+  /*   邊框  更立體*/
+  border: 1px solid #ccc;
+
+  /*    這個是利用opacity來改變強度 越低越透明 */
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+
+input[type="radio"] + label:nth-of-type(2) {
+  border-left: 0px;
+  border-right: 0px;
+}
+
+/* change background color for label next to checked radio button to make it look like highlited button */
+
+input[type="radio"]:checked + label {
+  /*    讓看起來立體的顏色消失 */
+  background: none;
+
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  background-color: #bebebe;
+}
+
+#filter-primary,
+#filter-gender {
+  display: flex;
+  justify-content:center;
+}
+
+.fa-address-card,
+.fa-map-marked-alt {
+  width: 50%;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.fa-user-friends,
+.fa-female,
+.fa-male {
+  flex-basis: 33.333333%;
+  flex-grow: 1;
+  text-align: center;
+}
